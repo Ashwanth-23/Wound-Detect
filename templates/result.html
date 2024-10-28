@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wound Analysis - Result</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e9ecef;
+            color: #333;
+            text-align: center;
+            position: relative; /* Added for positioning the button */
+            min-height: 100vh; /* Ensure the body takes at least full viewport height */
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #3498db;
+            margin-top: 20px;
+            font-size: 2em;
+        }
+        .result {
+            display: flex;
+            justify-content: space-between;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .image-container {
+            width: 48%;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 4px solid #3498db;
+            border-radius: 10px;
+            margin: 10px 0;
+            transition: transform 0.2s;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+        .back-button {
+            position: absolute;
+            bottom: 20px; /* Positioned at the bottom */
+            left: 20px; /* Positioned to the left */
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wound Analysis Result</h1>
+
+    <div class="result">
+        <div class="image-container">
+            <h2>Original Image</h2>
+            <img src="{{ original_image }}" alt="Original wound image">
+        </div>
+        <div class="image-container">
+            <h2>Detected Image</h2>
+            <img src="{{ processed_image }}" alt="Processed wound image">
+        </div>
+    </div>
+
+    <h2>Result</h2>
+    <h3>Surface Area: {{ area_cm2 }} cm²</h3>
+
+    <button class="back-button" onclick="window.location.href='/'">Back</button>
+</body>
+</html>

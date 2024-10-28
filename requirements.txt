@@ -1,0 +1,10 @@
+load_dotenv
+flask 
+pymongo
+opencv-python
+numpy
+cloudinary
+bson
+os
+matplotlib
+pytz

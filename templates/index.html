@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wound Analysis - Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9; /* Light background for a clean look */
+            color: #333; /* Dark text for readability */
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+        }
+        .upload-form {
+            border: 2px solid #4a90e2; /* Soft blue border */
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 10px; /* Rounded corners for the form */
+        }
+        .nav {
+            margin-bottom: 20px;
+            text-align: center; /* Center align navigation links */
+        }
+        .nav a {
+            margin: 0 15px; /* Spacing between nav links */
+            text-decoration: none; /* Remove underline */
+            color: #4a90e2; /* Soft blue color for links */
+            font-weight: bold; /* Bold text for emphasis */
+            transition: color 0.3s; /* Smooth color transition */
+        }
+        .nav a:hover {
+            color: #357ab8; /* Darker blue on hover */
+        }
+        .flash-messages {
+            color: #d32f2f; /* Red color for flash messages */
+            margin: 10px 0;
+            text-align: center; /* Center align flash messages */
+        }
+        h1 {
+            text-align: center; /* Center the main heading */
+            color: #4a90e2; /* Soft blue color for the heading */
+        }
+        input[type="file"] {
+            padding: 10px; /* Add padding for input */
+            border: 2px solid #4a90e2; /* Border color matching the theme */
+            border-radius: 5px; /* Rounded corners for the input */
+            width: 100%; /* Full width */
+            margin: 10px 0; /* Spacing above and below */
+            box-sizing: border-box; /* Include padding in total width */
+            transition: border-color 0.3s; /* Smooth transition */
+        }
+        input[type="file"]:focus {
+            border-color: #357ab8; /* Darker blue on focus */
+            outline: none; /* Remove outline */
+        }
+        input[type="submit"] {
+            background-color: #4a90e2; /* Soft blue background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding for the button */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners for the button */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Larger font size */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+        input[type="submit"]:hover {
+            background-color: #357ab8; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">Home</a>
+        <a href="/history">History</a>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="flash-messages">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <h1>Wound Analysis Tool</h1>
+    <div class="upload-form">
+        <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required><br><br>
+            <input type="submit" value="Upload and Analyze">
+        </form>
+    </div>
+</body>
+</html>
